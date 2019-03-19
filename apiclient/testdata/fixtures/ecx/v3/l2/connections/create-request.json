@@ -1,0 +1,15 @@
+{
+    "authorizationKey": "986744318870",
+    "notifications": [
+        "user@domain.com"
+    ],
+    "primaryName": "MA3-TEST",
+    "primaryPortUUID": "7b5650d1-810a-10a0-66e0-30ac094f8701",
+    "primaryVlanSTag": 4000,
+    "profileUUID": "69ee618d-be52-468d-bc99-00566f2dd2b9",
+    "purchaseOrderNumber": "PO",
+    "sellerMetroCode": "LD",
+    "sellerRegion": "eu-west-2",
+    "speed": 50,
+    "speedUnit": "MB"
+}

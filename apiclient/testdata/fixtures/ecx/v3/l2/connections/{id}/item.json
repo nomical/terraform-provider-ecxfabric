@@ -1,0 +1,75 @@
+{
+    "buyerOrganizationName": "Test Networks",
+    "uuid": "c0510f9b-ca34-4bb1-8fa8-d44cc8558953",
+    "name": "LD8_TEST",
+    "vlanSTag": 4000,
+    "portUUID": "7b050214-18c8-8c80-c6e0-30ac094f8be9",
+    "portName": "TEST-ECX-LD8-ECX-PRI-20912671",
+    "asideEncapsulation": "dot1q",
+    "metroCode": "LD",
+    "metroDescription": "London",
+    "providerStatus": "DEPROVISIONED",
+    "status": "DEPROVISIONED",
+    "billingTier": "Up to 50 MB",
+    "authorizationKey": "986744318870",
+    "speed": 50,
+    "speedUnit": "MB",
+    "redundancyType": "primary",
+    "sellerRegion": "eu-west-2",
+    "sellerMetroCode": "LD",
+    "sellerMetroDescription": "London",
+    "sellerServiceName": "AWS Direct Connect - Redundant - East London - LD8",
+    "sellerServiceUUID": "8b5cbdbd-53da-4d37-9bfc-cc988eb522f1",
+    "sellerOrganizationName": "EQUINIX-AWS",
+    "notifications": [
+        "user@domain.com"
+    ],
+    "purchaseOrderNumber": "PO",
+    "actionDetails": [
+        {
+            "actionType": "EQUINIX_EXECUTE_ACTION",
+            "operationId": "CONFIRM_CONNECTION",
+            "actionMessage": "Please provide the following credentials so that we can confirm the connection on your behalf. You also have the option to do this operation on AWS Console",
+            "actionRequiredData": [
+                {
+                    "key": "accessKey",
+                    "label": "Amazon Access Key",
+                    "value": "",
+                    "editable": true,
+                    "validationPattern": "{RegexForString50chars}"
+                },
+                {
+                    "key": "secretKey",
+                    "label": "Amazon Secret Key",
+                    "value": "",
+                    "editable": true,
+                    "validationPattern": "{RegexForString24chars}"
+                },
+                {
+                    "key": "awsConnectionId",
+                    "label": "AWS Hosted Connection Id",
+                    "value": "dxcon-fgx9sq3x",
+                    "editable": false,
+                    "validationPattern": ""
+                }
+            ]
+        }
+    ],
+    "createdDate": "2019-03-12T12:07:44.058Z",
+    "createdBy": "user@domain.com",
+    "createdByFullName": "User",
+    "createdByEmail": "user@domain.com",
+    "lastUpdatedBy": "user@domain.com",
+    "lastUpdatedDate": "2019-03-12T12:11:27.846Z",
+    "lastUpdatedByFullName": "User",
+    "lastUpdatedByEmail": "user@domain.com",
+    "deletedBy": "user@domain.com",
+    "deletedDate": "2019-03-12T12:11:12.268Z",
+    "deletedByEmail": "user@domain.com",
+    "zSidePortName": "dxcon-ffrlneok",
+    "zSidePortUUID": "69bb30fb-0e00-e000-6ee0-30ac094f85df",
+    "zSideVlanSTag": 307,
+    "remote": false,
+    "private": false,
+    "self": false
+}

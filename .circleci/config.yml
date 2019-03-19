@@ -1,0 +1,74 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.12.0
+    working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
+    steps:
+      - checkout
+      - run:
+          name: Get go dependencies
+          command: |
+            go get -v -t -d ./...
+      - run:
+          name: Vet code
+          command: |
+            make vet
+      - run:
+          name: Run unit tests
+          command: |
+            make test
+
+  terraform-acceptance-tests:
+    docker:
+      - image: circleci/golang:1.12.0
+    working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
+    steps:
+      - checkout
+      - run:
+          name: Get go dependencies
+          command: |
+            go get -v -t -d ./...
+      - run:
+          name: Run acceptance tests
+          command: |
+            make testacc
+
+  compile-and-release:
+    docker:
+      - image: circleci/golang:1.12.0
+    working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
+    steps:
+      - checkout
+      - run:
+          name: Get repo go dependencies
+          command: |
+            go get -v -t -d ./...
+      - run:
+          name: Get dependencies
+          command: |
+            go get -u github.com/stevenmatthewt/semantics
+            go get -u github.com/tcnksm/ghr
+            go get -u github.com/mitchellh/gox
+      - run:
+          name: Cross compile & release to GitHub
+          command: |
+            RELEASE_VERSION=$(semantics --output-tag)
+            chmod +x scripts/build-releases.sh
+            scripts/build-releases.sh "dist/" $RELEASE_VERSION
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete $RELEASE_VERSION dist/
+
+workflows:
+  version: 2
+  all:
+    jobs:
+      - build
+      - terraform-acceptance-tests:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      - compile-and-release:
+          requires:
+            - terraform-acceptance-tests

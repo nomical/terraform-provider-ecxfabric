@@ -1,0 +1,8 @@
+[
+    {
+        "errorCode": "IC-LAYER2-4023",
+        "errorMessage": "Connection does not exist or do not belong to user,Please check connection Id",
+        "moreInfo": "",
+        "property": "uuid"
+    }
+]

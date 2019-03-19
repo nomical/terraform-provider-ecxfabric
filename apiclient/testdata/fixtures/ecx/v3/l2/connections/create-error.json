@@ -1,0 +1,8 @@
+[
+    {
+        "errorCode": "IC-LAYER2-PORTS-001",
+        "errorMessage": "Port does not exist or not belong to user",
+        "moreInfo": "",
+        "property": "primaryPortUUID"
+    }
+]
