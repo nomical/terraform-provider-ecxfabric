@@ -209,12 +209,12 @@ func resourceL2ConnectionDelete(d *schema.ResourceData, m interface{}) error {
 
 	l2ConnStateConf := &resource.StateChangeConf{
 		Pending: []string{
-			apiclient.L2ConnectionStatusDeprovisioning,
+			apiclient.L2ConnectionProviderStatusDeprovisioning,
 		},
 		Target: []string{
-			apiclient.L2ConnectionStatusDeprovisioned,
+			apiclient.L2ConnectionProviderStatusDeprovisioned,
 		},
-		Refresh:    l2ConnectionStatusRefreshFunc(client, uuid),
+		Refresh:    l2ConnectionProviderStatusRefreshFunc(client, uuid),
 		Timeout:    d.Timeout(schema.TimeoutDefault),
 		Delay:      10 * time.Second,
 		MinTimeout: 3 * time.Second,
