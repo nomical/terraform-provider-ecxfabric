@@ -74,8 +74,8 @@ func testAccCheckL2ConnectionDestroy(s *terraform.State) error {
 			return err
 		}
 
-		if conn.Status != apiclient.L2ConnectionStatusDeprovisioned {
-			return fmt.Errorf("L2 connection in unexpected state! UUID: %v, Expected: %v, Actual: %v", rs.Primary.ID, apiclient.L2ConnectionStatusDeprovisioned, conn.Status)
+		if conn.Status != apiclient.L2ConnectionProviderStatusDeprovisioning {
+			return fmt.Errorf("L2 connection in unexpected state! UUID: %v, Expected: %v, Actual: %v", rs.Primary.ID, apiclient.L2ConnectionProviderStatusDeprovisioning, conn.Status)
 		}
 	}
 
