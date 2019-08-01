@@ -31,7 +31,7 @@ $ make build
 ```
 
 Using the provider
-----------------------
+------------------
 
 If you want to run Terraform with the ECXFabric provider plugin on your system, complete the following steps:
 
