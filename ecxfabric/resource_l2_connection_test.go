@@ -12,7 +12,7 @@ import (
 
 func TestAccL2Connection_Basic(t *testing.T) {
 	resourceID := "id" + acctest.RandString(10) // Added "id" at the beggining as RandString generated integer at start of string (sometimes!). TF Error: Invalid resource name; A name must start with a letter and may contain only letters, digits, underscores, and dashes.
-	authorizationKey := "986744318870"
+	authorizationKey := "132931216237"
 	notifications1 := "support@domain.com"
 	primaryName := "TF-L2C-Test"
 	purchaseOrderNumber := "TF-L2C-Test-PO"

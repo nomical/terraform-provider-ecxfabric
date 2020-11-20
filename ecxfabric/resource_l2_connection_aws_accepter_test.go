@@ -15,7 +15,7 @@ func TestAccL2ConnectionAwsAccepter_Basic(t *testing.T) {
 	accepterID := "id" + acctest.RandString(10) // Added "id" at the beggining as RandString generated integer at start of string (sometimes!). TF Error: Invalid resource name; A name must start with a letter and may contain only letters, digits, underscores, and dashes.
 	accepterName := "ecxfabric_l2_connection_aws_accepter." + accepterID
 
-	authorizationKey := "986744318870"
+	authorizationKey := "132931216237"
 	notifications1 := "support@domain.com"
 	primaryName := "TF-L2CAwsAccepter-Test"
 	purchaseOrderNumber := "TF-L2CAwsAccepter-Test-PO"
