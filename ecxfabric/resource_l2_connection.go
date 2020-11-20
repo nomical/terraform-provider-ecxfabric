@@ -159,7 +159,7 @@ func resourceL2ConnectionCreate(d *schema.ResourceData, m interface{}) error {
 	l2ProviderConnStateConf := &resource.StateChangeConf{
 		Pending: []string{
 			apiclient.L2ConnectionProviderStatusNotAvailable,
-			apiclient.L2ConnectionProviderStatusProvisioning
+			apiclient.L2ConnectionProviderStatusProvisioning,
 		},
 		Target: []string{
 			apiclient.L2ConnectionProviderStatusPendingApproval,

@@ -2,14 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/golang:1.12.0
+      - image: circleci/golang:1.15.5
     working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
     steps:
       - checkout
-      - run:
-          name: Get go dependencies
-          command: |
-            go get -v -t -d ./...
+      # - run:
+      #     name: Get go dependencies
+      #     command: |
+      #       go get -v -t -d ./...
       - run:
           name: Vet code
           command: |
@@ -21,14 +21,14 @@ jobs:
 
   terraform-acceptance-tests:
     docker:
-      - image: circleci/golang:1.12.0
+      - image: circleci/golang:1.15.5
     working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
     steps:
       - checkout
-      - run:
-          name: Get go dependencies
-          command: |
-            go get -v -t -d ./...
+      # - run:
+      #     name: Get go dependencies
+      #     command: |
+      #       go get -v -t -d ./...
       - run:
           name: Run acceptance tests
           command: |
@@ -37,14 +37,14 @@ jobs:
 
   compile-and-release:
     docker:
-      - image: circleci/golang:1.12.0
+      - image: circleci/golang:1.15.5
     working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
     steps:
       - checkout
-      - run:
-          name: Get repo go dependencies
-          command: |
-            go get -v -t -d ./...
+      # - run:
+      #     name: Get repo go dependencies
+      #     command: |
+      #       go get -v -t -d ./...
       - run:
           name: Get dependencies
           command: |
