@@ -36,18 +36,14 @@ jobs:
       - run:
           name: Get dependencies
           command: |
-            go get -u github.com/stevenmatthewt/semantics
             go get -u github.com/tcnksm/ghr
             go get -u github.com/mitchellh/gox
       - run:
           name: Cross compile & release to GitHub
           command: |
-            RELEASE_VERSION=$(semantics --output-tag)
-            echo $RELEASE_VERSION
             chmod +x scripts/build-releases.sh
-            scripts/build-releases.sh "dist/" $RELEASE_VERSION
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete $RELEASE_VERSION dist/
-
+            scripts/build-releases.sh "dist/" $CIRCLE_TAG
+            ghr -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -replace $CIRCLE_TAG dist/
 workflows:
   version: 2
   all:
