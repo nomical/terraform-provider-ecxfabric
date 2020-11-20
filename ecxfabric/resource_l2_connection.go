@@ -17,8 +17,8 @@ func resourceL2Connection() *schema.Resource {
 		Delete: resourceL2ConnectionDelete,
 
 		Timeouts: &schema.ResourceTimeout{
-			Create: schema.DefaultTimeout(5 * time.Minute),
-			Delete: schema.DefaultTimeout(5 * time.Minute),
+			Create: schema.DefaultTimeout(15 * time.Minute),
+			Delete: schema.DefaultTimeout(15 * time.Minute),
 		},
 
 		Schema: map[string]*schema.Schema{
@@ -163,6 +163,7 @@ func resourceL2ConnectionCreate(d *schema.ResourceData, m interface{}) error {
 		},
 		Target: []string{
 			apiclient.L2ConnectionProviderStatusPendingApproval,
+			apiclient.L2ConnectionProviderStatusProvisioned,
 		},
 		Refresh: l2ConnectionProviderStatusRefreshFunc(client, resp.PrimaryConnectionID),
 		Timeout: d.Timeout(schema.TimeoutCreate),

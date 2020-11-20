@@ -11,6 +11,7 @@ require (
 	github.com/bmatcuk/doublestar v1.3.4 // indirect
 	github.com/fatih/color v1.10.0 // indirect
 	github.com/google/go-cmp v0.5.3 // indirect
+	github.com/gorilla/mux v1.8.0
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-getter v1.5.1 // indirect
 	github.com/hashicorp/go-hclog v0.15.0 // indirect
