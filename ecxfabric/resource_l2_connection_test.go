@@ -17,7 +17,7 @@ func TestAccL2Connection_Basic(t *testing.T) {
 	primaryName := "TF-L2C-Test"
 	purchaseOrderNumber := "TF-L2C-Test-PO"
 	primaryPortUUID := "7b5650d1-810a-10a0-66e0-30ac094f8701"
-	primaryVlanSTag := "20"
+	primaryVlanSTag := "30"
 	profileUUID := "69ee618d-be52-468d-bc99-00566f2dd2b9"
 	sellerMetroCode := "LD"
 	sellerRegion := "eu-west-2"
