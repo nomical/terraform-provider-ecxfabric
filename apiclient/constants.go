@@ -8,6 +8,7 @@ const (
 )
 
 const (
+	L2ConnectionProviderStatusProvisioning    = "PROVISIONING"
 	L2ConnectionProviderStatusPendingApproval = "PENDING_APPROVAL"
 	L2ConnectionProviderStatusNotAvailable    = "NOT_AVAILABLE"
 	L2ConnectionProviderStatusDeprovisioning  = "DEPROVISIONING"
