@@ -6,10 +6,6 @@ jobs:
     working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
     steps:
       - checkout
-      # - run:
-      #     name: Get go dependencies
-      #     command: |
-      #       go get -v -t -d ./...
       - run:
           name: Vet code
           command: |
@@ -25,10 +21,6 @@ jobs:
     working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
     steps:
       - checkout
-      # - run:
-      #     name: Get go dependencies
-      #     command: |
-      #       go get -v -t -d ./...
       - run:
           name: Run acceptance tests
           command: |
@@ -41,10 +33,6 @@ jobs:
     working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
     steps:
       - checkout
-      # - run:
-      #     name: Get repo go dependencies
-      #     command: |
-      #       go get -v -t -d ./...
       - run:
           name: Get dependencies
           command: |
@@ -55,6 +43,7 @@ jobs:
           name: Cross compile & release to GitHub
           command: |
             RELEASE_VERSION=$(semantics --output-tag)
+            echo $RELEASE_VERSION
             chmod +x scripts/build-releases.sh
             scripts/build-releases.sh "dist/" $RELEASE_VERSION
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete $RELEASE_VERSION dist/
@@ -63,13 +52,21 @@ workflows:
   version: 2
   all:
     jobs:
-      - build
+      - build:
+          filters:  # required since `deploy` has tag filters AND requires `build`
+            tags:
+              only: /.*/
       - terraform-acceptance-tests:
           requires:
             - build
-          filters:
-            branches:
-              only: master
+          filters:  # required since `deploy` has tag filters AND requires `build`
+            tags:
+              only: /.*/
       - compile-and-release:
           requires:
             - terraform-acceptance-tests
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
