@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/golang:1.15.5
+      - image: circleci/golang:1.17
     working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
     steps:
       - checkout
@@ -17,7 +17,7 @@ jobs:
 
   terraform-acceptance-tests:
     docker:
-      - image: circleci/golang:1.15.5
+      - image: circleci/golang:1.17
     working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
     steps:
       - checkout
@@ -49,18 +49,18 @@ workflows:
   all:
     jobs:
       - build:
-          filters:  # required since `deploy` has tag filters AND requires `build`
+          filters: # required since `deploy` has tag filters AND requires `build`
             tags:
               only: /.*/
-      - terraform-acceptance-tests:
-          requires:
-            - build
-          filters:  # required since `deploy` has tag filters AND requires `build`
-            tags:
-              only: /.*/
+      # - terraform-acceptance-tests:
+      #     requires:
+      #       - build
+      #     filters:  # required since `deploy` has tag filters AND requires `build`
+      #       tags:
+      #         only: /.*/
       - compile-and-release:
           requires:
-            - terraform-acceptance-tests
+            - build
           filters:
             tags:
               only: /^v.*/
