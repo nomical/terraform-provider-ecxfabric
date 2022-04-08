@@ -58,8 +58,8 @@ workflows:
       #       tags:
       #         only: /.*/
       - compile-and-release:
-          requires:
-            - build
+          # requires:
+          #   - build
           filters:
             tags:
               only: /.*/
