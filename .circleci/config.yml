@@ -25,7 +25,7 @@ jobs:
           name: Run acceptance tests
           command: |
             make testacc
-          no_output_timeout: 29m
+          no_output_timeout: 30m
 
   compile-and-release:
     docker:
