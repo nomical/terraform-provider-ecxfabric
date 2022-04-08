@@ -30,7 +30,7 @@ jobs:
   compile-and-release:
     docker:
       - image: circleci/golang:1.15.5
-    working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
+    # working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
     steps:
       - checkout
       - run:
