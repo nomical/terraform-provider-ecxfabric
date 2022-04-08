@@ -49,18 +49,18 @@ workflows:
   all:
     jobs:
       - build:
-          filters:  # required since `deploy` has tag filters AND requires `build`
+          filters: # required since `deploy` has tag filters AND requires `build`
             tags:
               only: /.*/
-      - terraform-acceptance-tests:
-          requires:
-            - build
-          filters:  # required since `deploy` has tag filters AND requires `build`
-            tags:
-              only: /.*/
+      # - terraform-acceptance-tests:
+      #     requires:
+      #       - build
+      #     filters:  # required since `deploy` has tag filters AND requires `build`
+      #       tags:
+      #         only: /.*/
       - compile-and-release:
           requires:
-            - terraform-acceptance-tests
+            - build
           filters:
             tags:
               only: /^v.*/
