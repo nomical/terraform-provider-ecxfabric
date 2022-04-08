@@ -36,6 +36,8 @@ jobs:
       - run:
           name: Get dependencies
           command: |
+            go get -u github.com/tcnksm/ghr
+            go get -u github.com/mitchellh/gox
             go install github.com/tcnksm/ghr
             go install github.com/mitchellh/gox
       - run:
