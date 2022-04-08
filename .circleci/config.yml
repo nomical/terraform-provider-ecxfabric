@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/golang:1.15.5
+      - image: cimg/go:1.1
     working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
     steps:
       - checkout
@@ -17,7 +17,7 @@ jobs:
 
   terraform-acceptance-tests:
     docker:
-      - image: circleci/golang:1.15.5
+      - image: cimg/go:1.18
     working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
     steps:
       - checkout
