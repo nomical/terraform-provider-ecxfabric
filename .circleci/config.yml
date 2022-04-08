@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: cimg/go:1.18
-    working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
+    # working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
     steps:
       - checkout
       - run:
