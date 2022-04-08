@@ -7,7 +7,7 @@ set -o pipefail
 DIST_PATH=$1
 VERSION=$2
 
-# gox -os="linux darwin windows" -arch="amd64" -output="$DIST_PATH/{{.OS}}_{{.Arch}}"
+gox -os="linux darwin windows" -arch="amd64" -output="$DIST_PATH/{{.OS}}_{{.Arch}}"
 gox -os="darwin" -arch="arm64" -output="$DIST_PATH/{{.OS}}_{{.Arch}}"
 
 cd $DIST_PATH

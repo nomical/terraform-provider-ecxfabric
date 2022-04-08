@@ -3,7 +3,6 @@ jobs:
   build:
     docker:
       - image: cimg/go:1.18
-    # working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
     steps:
       - checkout
       - run:
@@ -18,7 +17,6 @@ jobs:
   terraform-acceptance-tests:
     docker:
       - image: cimg/go:1.18
-    working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
     steps:
       - checkout
       - run:
@@ -30,7 +28,6 @@ jobs:
   compile-and-release:
     docker:
       - image: cimg/go:1.18
-    # working_directory: /go/src/github.com/nomical/terraform-provider-ecxfabric
     steps:
       - checkout
       - run:
@@ -44,15 +41,16 @@ jobs:
           name: Cross compile & release to GitHub
           command: |
             chmod +x scripts/build-releases.sh
-            scripts/build-releases.sh "dist/" "v1.1.5"
+            scripts/build-releases.sh "dist/" $CIRCLE_TAG
+            ghr -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -replace $CIRCLE_TAG dist/
 workflows:
   version: 2
   all:
     jobs:
-      # - build:
-      #     filters: # required since `deploy` has tag filters AND requires `build`
-      #       tags:
-      #         only: /.*/
+      - build:
+          filters: # required since `deploy` has tag filters AND requires `build`
+            tags:
+              only: /.*/
       # - terraform-acceptance-tests:
       #     requires:
       #       - build
@@ -60,16 +58,10 @@ workflows:
       #       tags:
       #         only: /.*/
       - compile-and-release:
-          # requires:
-          #   - build
+          requires:
+            - build
           filters:
             tags:
-              only: /.*/
-      # - compile-and-release:
-      #     requires:
-      #       - build
-      #     filters:
-      #       tags:
-      #         only: /^v.*/
-      #       branches:
-      #         ignore: /.*/
+              only: /^v.*/
+            branches:
+              ignore: /.*/
